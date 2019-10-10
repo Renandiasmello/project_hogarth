@@ -82,7 +82,6 @@ var vue_instance = new Vue({
                         $('#delete').fadeIn();
                         $('#saved').fadeOut();
                         $('#pending').fadeOut();
-                        //alert('Record successfully deleted.');
                     })
             } else {
                 $('#delete').fadeOut();
@@ -115,12 +114,20 @@ var vue_instance = new Vue({
     <div class="container">
         <div>
             <h3>{{book.action}} Book</h3>
+            
             <form @submit.prevent="save()">
-                <input type="text" placeholder="Title" v-model="book.title" required>
-                <input type="text" placeholder="Author" v-model="book.author" required>
-                <input type="hidden" v-model="book.id">
-                <input type="submit" class="btn btn-primary text-white" value="Save" :disabled="!book.title || !book.author">
+                <div class="form-group row">
+                    <div class="col-md-4 mb-4 mb-lg-0">
+                        <input type="text" class="form-control" placeholder="Title" v-model="book.title" required>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" placeholder="Author" v-model="book.author" required>
+                    </div>
+                    <input type="hidden" v-model="book.id">
+                    <input type="submit" class="btn btn-primary text-white" value="Save" :disabled="!book.title || !book.author">
+                    </div>
             </form>
+            
         </div>
         <br>
         <div>
@@ -145,8 +152,8 @@ var vue_instance = new Vue({
                             <td>{{ book.id }}</td>
                             <td>{{ book.title }}</td>
                             <td>{{ book.author }}</td>
-                            <td><a href="" @click.prevent="put(book)">Edit</a></td>
-                            <td><a href="" @click.prevent="del(book.id)">Delete</a></td>
+                            <td class="text-center"><a href="" @click.prevent="put(book)"><i class="fas fa-edit"></i></a></td>
+                            <td class="text-center"><a href="" @click.prevent="del(book.id)"><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                     </template>
                     <template v-if="!books.length">
