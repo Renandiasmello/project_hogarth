@@ -1,6 +1,6 @@
 # Project Hogarth
 
-It is a simple application for creating, deleting and updating books.
+It is a simple application for creating, deleting and updating books using PHP and VUEjs.
 
 Required:
  - PHP >= 7
